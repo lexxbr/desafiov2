@@ -9,9 +9,8 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	  <script type="text/javascript" src="js/funcoes.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" >
     <title>UNIVALI | Desafio_v1.0 - Cadastro de Produtos</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 
     <style>
@@ -69,7 +68,38 @@
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body>    
+<body>    
+
+<!-- Modal -->
+<div id="meuModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Conteúdo do modal-->
+    <div class="modal-content">
+
+      <!-- Cabeçalho do modal -->
+      <div class="modal-header">
+        <h4 class="modal-title">UNIVALI | desafio</h4>
+        <button type="button" class="btn btn-close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Corpo do modal -->
+      <div class="modal-body">
+        <p>Dep. Informática |UNIVALI</p>
+        <li><a href="univali.br">univali.br</a></li>
+      </div>
+
+      <!-- Rodapé do modal-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- fim Modal -->
+
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Desafio | <b>UNIVALI</b></a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +108,8 @@
   <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Busca" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <button class="nav-link px-3 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#myModal">Departamentos</button>
+      <button type="button" class="nav-link px-4 bg-dark text-white btn-lg mt-1 ml-1" data-toggle="modal" data-target="#meuModal">Departamentos</button>
+
     </div>
   </div>
 
@@ -155,92 +186,81 @@
       </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Itens | Cadastro de Produtos</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <a href="index.html" type="button" class="btn btn-sm btn-outline-secondary">Anterior</a>
-            <a href="listagem.html" class="btn btn-sm btn-outline-secondary">Próximo</a>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="modal" data-bs-target="#myModal">
-            <span data-feather="calendar" class="align-text-bottom" ></span>
-            Calendário
-          </button>
-        </div>
-      </div>
-      <p class="lead"></p>
-    
-
-        <form id="frmCadastro" class="card p-2" width="900" height="380" method="post">
-          <ul>
-            
-              <label for="txtCodigo" class="form-label">Código: <input type="tel" id="txtCodigo" class="form-control"/></label><br>
-    
-              <label for="txtNome" class="form-label">Produto:</label>
-              <input type="text" maxlength="100" id="txtNome" class="form-control" placeholder="Descreva o produto"/>
-
-              <label class="form-label" for="txtPerecivel">Perecível 
-                <select class="form-select" id="txtPerecivel" >
-                  <option selected></option>
-                  <option value="Sim">Perecível</option>
-                  <option value="Não">Não Perecível</option>
-                </select>
-              </label><br>
-              <label for="txtMedida" class="form-label">Unid. de Medida: 
-                <select class="form-select" id="txtMedida" >
-                  <option selected value=""></option>
-                  <option value="kg">Quilograma</option>
-                  <option value="lt">Litro</option>
-                  <option value="un">Unidade</option>
-                </select>
-          
-              </label><br>  
-              <div id="pai">
-                  <div id="div1">
-                  <label for="txtEstoque" class="form-label">Quantidade:  </label><br>
-                  <input type="text" id="txtEstoque" class="form-control" placeholder="1,000"/>
-                  </div>
-                  
-              </div>           
-         
-              <label for="txtCusto" class="form-label">Custo: <input type="tel" id="txtCusto" class="form-control" placeholder="R$0.000,00"/></label><br>
-         
-              <label for="txtDtaFab" class="form-label">Data Fab.: <input type="date" placeholder="dd-mm-yyyy" id="txtDtaFab" class="form-control" data-date-format="dd/mm/yyyy"/></label><br>
-              
-              <div class="invalid-feedback">
-                Não pode ser informado a data de fabricação<br>
-                inferior a data atual.
-              </div>
-           
-              <label for="txtDtaVal"class="form-label">Data Val.: <input type="date" placeholder="dd-mm-yyyy" id="txtDtaVal" class="form-control" data-date-format="dd/mm/yyyy"/>  </label><br>
-                        
-              
-              <br><input type="submit" value="Salvar" id="btnSalvar" class="w-100 btn btn-primary btn-lg" />
-            
-          </ul>
-        </form>
-        <!-- modal -->
-        <div class="modal fade modal-dialog" id="myModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalToggleLabel">Desafio | UNIVALI</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">      
-                Dep. de Tecnologia | 
-                <a href="https://univali.br"> UNIVALI</a>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">ok</button>
-              </div>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Itens | Cadastro de Produtos</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <a href="index.html" type="button" class="btn btn-sm btn-outline-secondary">Anterior</a>
+              <a href="listagem.html" class="btn btn-sm btn-outline-secondary">Próximo</a>
             </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="modal" data-target="#meuModal">
+              <span data-feather="calendar" class="align-text-bottom" ></span>
+              Calendário
+            </button>
           </div>
         </div>
+        <p class="lead"></p>
+      
 
-    </main>
+          <form id="frmCadastro" class="card p-2" width="900" height="380" method="post">
+            <ul>
+              
+                <label for="txtCodigo" class="form-label">Código: <input type="tel" id="txtCodigo" class="form-control"/></label><br>
+      
+                <label for="txtNome" class="form-label">Produto:</label>
+                <input type="text" maxlength="100" id="txtNome" class="form-control" placeholder="Descreva o produto"/>
+
+                <label class="form-label" for="txtPerecivel">Perecível 
+                  <select class="form-select" id="txtPerecivel" >
+                    <option selected></option>
+                    <option value="Sim">Perecível</option>
+                    <option value="Não">Não Perecível</option>
+                  </select>
+                </label><br>
+                <label for="txtMedida" class="form-label">Unid. de Medida: 
+                  <select class="form-select" id="txtMedida" >
+                    <option selected value=""></option>
+                    <option value="kg">Quilograma</option>
+                    <option value="lt">Litro</option>
+                    <option value="un">Unidade</option>
+                  </select>
+            
+                </label><br>  
+                <div id="pai">
+                    <div id="div1">
+                    <label for="txtEstoque" class="form-label">Quantidade:  </label><br>
+                    <input type="text" id="txtEstoque" class="form-control" placeholder="1,000"/>
+                    </div>
+                    
+                </div>           
+          
+                <label for="txtCusto" class="form-label">Custo: <input type="tel" id="txtCusto" class="form-control" placeholder="R$0.000,00"/></label><br>
+          
+                <label for="txtDtaFab" class="form-label">Data Fab.: <input type="date" placeholder="dd-mm-yyyy" id="txtDtaFab" class="form-control" data-date-format="dd/mm/yyyy"/></label><br>
+                
+                <div class="invalid-feedback">
+                  Não pode ser informado a data de fabricação<br>
+                  inferior a data atual.
+                </div>
+            
+                <label for="txtDtaVal"class="form-label">Data Val.: <input type="date" placeholder="dd-mm-yyyy" id="txtDtaVal" class="form-control" data-date-format="dd/mm/yyyy"/>  </label><br>
+                          
+                
+                <br><input type="submit" value="Salvar" id="btnSalvar" class="w-100 btn btn-primary btn-lg" />
+              
+            </ul>
+          </form>        
+          
+      </main>
     </div>
   </div>   
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+      <script src="dashboard.js"></script>
   </body>
 </html>

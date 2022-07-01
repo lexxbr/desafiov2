@@ -1,13 +1,10 @@
 $(function(){
-
+	
 	var operacao = "A"; //"A"=Adição; "E"=Edição
-
 	var indice_selecionado = -1;
-
 	var tbClientes = localStorage.getItem("tbClientes");// Recupera os dados armazenados
 
 	tbClientes = JSON.parse(tbClientes); // Converte string para objeto
-
 	if(tbClientes == null) // Caso não haja conteúdo, iniciamos um vetor vazio
 		tbClientes = [];
 
@@ -57,7 +54,6 @@ $(function(){
 	}
 
 	function Listar(){
-		
 		$("#tblListar").html("");
 		$("#tblListar").html(
 			"<thead>"+
@@ -241,4 +237,13 @@ $(function(){
 		Excluir();
 		Listar();
 	});
+
+	// $("#meuModal").on("shown.modal", function () {
+	// 	$("#meuInput").trigger("focus")
+	//   })
+	//   var myModal = new bootstrap.Modal(document.getElementById("myModal"), options)
+	 
+	//   myModal.addEventListener("shown.modal", function () {
+	//   myInput.focus()
+	//   })  
 });
